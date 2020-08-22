@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+    <div th:replace="fragments.html :: main-nav"></div>
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>ITO 수정</h2>
+        </div>
+        <div class="row justify-content-center">
+            <form class="needs-validation col-sm-6" action="#"
+                  th:action="@{/settings/member}" th:object="${SignUpForm}" method="post" novalidate>
+
+                <div class="form-group">
+                    <input id="id" type="text" th:field="*{id}" style="display: none">
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname">회사계정</label>
+                    <input id="nickname" type="text" th:field="*{nickname}" class="form-control"
+                           placeholder="xai_tmp2463" aria-describedby="nicknameHelp" required minlength="3" maxlength="20">
+                    <small id="nicknameHelp" class="form-text text-muted">
+                        공백없이 문자와 숫자로만 3자 이상 20자 이내로 입력하세요. 입력후에 변경할 수 있습니다.
+                    </small>
+                    <small class="invalid-feedback">회사계정을 입력하세요.</small>
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nickname Error</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input id="email" type="email" th:field="*{email}" class="form-control"
+                           placeholder="your@email.com" aria-describedby="emailHelp" required>
+                    <small id="emailHelp" class="form-text text-muted">
+                        JOB FLOW는 사용자의 이메일을 공개하지 않습니다.
+                    </small>
+                    <small class="invalid-feedback">이메일을 입력하세요.</small>
+                    <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">패스워드</label>
+                    <input id="password" type="password" th:field="*{password}" class="form-control"
+                           aria-describedby="passwordHelp">
+                    <small id="passwordHelp" class="form-text text-muted">
+                        8자 이상 50자 이내로 입력하세요. 영문자, 숫자, 특수기호를 사용할 수 있으며 공백은 사용할 수 없습니다.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="companyName">회사이름</label>
+                    <input id="companyName" type="text" th:field="*{companyName}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="part">파트구분</label>
+                    <input id="part" type="text" th:field="*{part}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="system">시스템구분</label>
+                    <input id="system" type="text" th:field="*{system}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber">내선전화번호</label>
+                    <input id="contactNumber" type="text" th:field="*{contactNumber}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit"
+                            aria-describedby="submitHelp">수정하기</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="fragments.html :: footer"></div>
+    </div>
+    <script th:replace="fragments.html :: form-validation"></script>
+</body>
+</html>

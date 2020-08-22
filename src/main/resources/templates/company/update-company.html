@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+    <div th:replace="fragments.html :: main-nav"></div>
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Company 수정</h2>
+        </div>
+        <div class="row justify-content-center">
+            <form class="needs-validation col-sm-6" action="#"
+                  th:action="@{/company}" th:object="${CompanyForm}" method="post" novalidate>
+                <div class="form-group">
+                    <label for="companyName">업체명</label>
+                    <input id="companyName" type="text" th:field="*{companyName}" class="form-control"
+                           aria-describedby="nicknameHelp" required>
+                    <small class="invalid-feedback">업체명을 입력하세요.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="manager">담당자</label>
+                    <input id="manager" type="text" th:field="*{manager}" class="form-control"
+                           aria-describedby="nicknameHelp" required>
+                    <small class="invalid-feedback">당당자를 입력하세요.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname">영업대표(Y/N)</label>
+                    <input id="nickname" type="text" th:field="*{salesYn}" class="form-control"
+                           placeholder="xai_tmp2463" aria-describedby="nicknameHelp" required>
+                    <small class="invalid-feedback">영업대표 여부를 입력하세요.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber">전화번호</label>
+                    <input id="contactNumber" type="text" th:field="*{contactNumber}" class="form-control"
+                           aria-describedby="nicknameHelp" required>
+                    <small class="invalid-feedback">전화번호를 입력하세요.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">업체명</label>
+                    <input id="email" type="text" th:field="*{email}" class="form-control"
+                           aria-describedby="nicknameHelp" required>
+                    <small class="invalid-feedback">이메일을 입력하세요.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="fieldManager">현장대리인</label>
+                    <input id="fieldManager" type="text" th:field="*{fieldManager}" class="form-control"
+                           aria-describedby="nicknameHelp" required>
+                    <small class="invalid-feedback">현장대리인을 입력하세요.</small>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit"
+                            aria-describedby="submitHelp">수정하기</button>
+                    <small id="submitHelp" class="form-text text-muted">
+                        <a href="#">약관</a>에 동의하시면 가입하기 버튼을 클릭하세요.
+                    </small>
+                </div>
+            </form>
+        </div>
+
+        <div class="fragments.html :: footer"></div>
+    </div>
+    <script th:replace="fragments.html :: form-validation"></script>
+</body>
+</html>

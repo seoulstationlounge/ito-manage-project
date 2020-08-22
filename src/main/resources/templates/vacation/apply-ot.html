@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+
+<body class="bg-light">
+
+<div th:replace="fragments.html :: main-nav"></div>
+<!--    <div class="alert alert-warning" role="alert" th:if="${account != null && !account?.emailVerified}">-->
+<!--        JOB FLOW 가입을 완료하려면 <a href="#" th:href="@{/check-email(email=${account.email})}" class="alert-link">계정 인증 이메일을 확인</a>하세요.-->
+<!--    </div>-->
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <table width="800" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
+                   style="border-collapse:collapse;" class="form2" align="center">
+                <tr>
+                    <td align="right">&nbsp;</td>
+                </tr>
+            </table>
+            <table width="800" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
+                   style="border-collapse:collapse;" class="form10 col-sm-6" align="center">
+                <tr valign="middle">
+                    <td width="643" height="93" align="center" class="form23b">
+                        OT 신청서
+                    </td>
+                </tr>
+            </table>
+            <table width="800" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
+                   style="border-collapse:collapse;" class="form2" align="center">
+                <tr>
+                    <td align="center" class="form16b" id="tms_auto_sign" style="float:right;">
+                        <table width="200" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000">
+                            <tr>
+                                <td width="50" align="center" class="form13b">신청자</td>
+                                <td width="50" align="center" class="form13b">현장대리인</td>
+                            </tr>
+                            <tr>
+                                <td height="60" align="center" class="form13" th:text="${account.userName}"></td>
+                                <td height="60" align="center" class="form13" th:text="${company.fieldManager}"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table width="800" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000"
+               style="border-collapse:collapse;" align="center" class="form10">
+                <tr style="border-left: hidden; border-right: hidden; border-top: hidden;">
+                    <td height="40" colspan="6" align="left" class="form13b">개인정보</td>
+                </tr>
+                <tr>
+                    <td height="40" align="center" style="width: 90px" bgcolor="#D9E2F3" class="form10b">소&nbsp&nbsp;속</td>
+                    <td align="center" class="form10" th:text="${account.part}"></td>
+                    <td align="center" bgcolor="#D9E2F3" class="form10b">담당업무</td>
+                    <td align="center" class="form10" th:text="${account.system}"></td>
+                </tr>
+                <tr>
+                    <td height="40" colspan="1" align="center" bgcolor="#D9E2F3" class="form10b">성&nbsp&nbsp명</td>
+                    <td width="188" align="center" class="form10" th:text="${account.userName}"></td>
+                    <td width="79" align="center" bgcolor="#D9E2F3" class="form10b">직&nbsp&nbsp위</td>
+                    <td width="182" align="center" class="form10" th:text="${account.companyPosition}"></td>
+                </tr>
+                <tr style="border-left: hidden; border-right: hidden;">
+                    <td height="60" colspan="6" align="left" class="form10b"></td>
+                </tr>
+            </table>
+            <table width="800" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000"
+                   style="border-collapse:collapse;" align="center" class="form10">
+                <tr style=" border-left: hidden; border-right: hidden; border-top: hidden;">
+                    <td height="40" colspan="6" align="left" class="form13b">근무사유</td>
+                </tr>
+                <tr>
+                    <td width="177px" height="40" align="center" bgcolor="#D9E2F3" class="form10b">일자</td>
+                    <td width="177px" height="40" align="center" bgcolor="#D9E2F3" class="form10b">시작시간</td>
+                    <td width="177px" height="40" align="center" bgcolor="#D9E2F3" class="form10b">종료시간</td>
+                    <td width="58px" height="40" align="center" bgcolor="#D9E2F3" class="form10b">휴게시간</td>
+                    <td width="70px" height="40" align="center" bgcolor="#D9E2F3" class="form10b">대휴기준</td>
+                    <td width="180px" height="40" align="center" bgcolor="#D9E2F3" class="form10b">사유</td>
+                </tr>
+                <tr>
+                    <td><input id="workDate1" type="date" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="startOtTime1" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="endOtTime1" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="restTime1" type="number" class="form-control" placeholder="0">
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <select class="custom-select mr-sm-2" id="vacationSum1" aria-describedby="eventTypeHelp">
+                            <option th:value="0.5">0.5</option>
+                            <option th:value="1">1</option>
+                        </select>
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <input id="remark1" type="text" class="form-control" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input id="workDate2" type="date" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="startOtTime2" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="endOtTime2" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="restTime2" type="number" class="form-control" placeholder="0">
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <select class="custom-select mr-sm-2" id="vacationSum2" aria-describedby="eventTypeHelp">
+                            <option th:value="0.5">0.5</option>
+                            <option th:value="1">1</option>
+                        </select>
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <input id="remark2" type="text" class="form-control" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input id="workDate3" type="date" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="startOtTime3" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="endOtTime3" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="restTime3" type="number" class="form-control" placeholder="0">
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <select class="custom-select mr-sm-2" id="vacationSum3" aria-describedby="eventTypeHelp">
+                            <option th:value="0.5">0.5</option>
+                            <option th:value="1">1</option>
+                        </select>
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <input id="remark3" type="text" class="form-control" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input id="workDate4" type="date" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="startOtTime4" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="endOtTime4" type="time" class="form-control"
+                               aria-describedby="startOtTimeHelp" required>
+                    </td>
+                    <td>
+                        <input id="restTime4" type="number" class="form-control" placeholder="0">
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <select class="custom-select mr-sm-2" id="vacationSum4" aria-describedby="eventTypeHelp">
+                            <option th:value="0.5">0.5</option>
+                            <option th:value="1">1</option>
+                        </select>
+                    </td>
+                    <td height="40" align="center" bgcolor="#D9E2F3" class="form10b">
+                        <input id="remark4" type="text" class="form-control" required>
+                    </td>
+                </tr>
+            </table>
+            <table width="800" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000"
+                   style="border-collapse:collapse;" align="center" class="form10">
+                <tr style="border-left: hidden; border-right: hidden; border-bottom: hidden;">
+                    <td height="40" colspan="6">
+                        <div class="form-group">
+                            <button id="otApplySubmit" style="margin-top: 10px" class="btn btn-primary btn-block" type="submit"
+                                    aria-describedby="submitHelp">OT 신청
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments.html :: footer"></div>
+<div th:replace="fragments.html :: date-time"></div>
+<script th:replace="fragments.html :: editor-script"></script>
+<script th:replace="fragments.html :: tooltip"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#otApplySubmit').click(function(){
+            if($('#workDate1').val() != '') {
+                getParam(1);
+            }
+
+            if($('#workDate2').val() != '') {
+                getParam(2);
+            }
+
+            if($('#workDate3').val() != '') {
+                getParam(3);
+            }
+
+            if($('#workDate4').val() != '') {
+                getParam(4);
+            }
+
+            window.location.reload('lcaohost:8080/vacation');
+        });
+    });
+
+    function getParam(num) {
+        var data = {
+            startDateTime : $('#workDate' + num).val(),
+            endDateTime : $('#workDate' + num).val(),
+            startOtTime : $('#startOtTime' + num).val(),
+            endOtTime : $('#endOtTime' + num).val(),
+            restTime : $('#restTime' + num).val(),
+            vacationSum : $('#vacationSum' + num).val(),
+            remark : $('#remark' + num).val()
+        };
+
+        debugger;
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            dataType: "json",
+            url: '/otApply',
+            contentType:'application/json; charset=utf-8'
+        }).done(function() {
+
+        }).fail(function (error) {
+            // alert(JSON.stringify(error));
+        });
+    }
+</script>
+
+</body>
+</html>
