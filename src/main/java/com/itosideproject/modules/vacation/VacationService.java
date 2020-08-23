@@ -141,8 +141,7 @@ public class VacationService {
             );
 
             vacationStatistics.setUseSum(
-                    vacationStatistics.getCongratulationUse()
-                    + vacationStatistics.getAnnualUse()
+                    vacationStatistics.getAnnualUse()
                     + vacationStatistics.getAlternativeUse()
                     + vacationStatistics.getAlternativeUse()
             );

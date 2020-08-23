@@ -1,5 +1,7 @@
 package com.itosideproject.modules.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itosideproject.modules.tag.Tag;
 import com.itosideproject.modules.zone.Zone;
 import lombok.*;
@@ -18,20 +20,25 @@ import java.util.UUID;
 public class Account {
 
     @Id @GeneratedValue
+    @JsonProperty
     private Long id;
 
     private String companyPosition;
 
+    @JsonProperty
     private String userName;
 
     private String companyName;
 
     @Column(unique = true)
+    @JsonProperty
     private String email;
 
-    @Column(unique = true)
+    @Column(nullable=false, length=20, unique=true)
+    @JsonProperty
     private String nickname;
 
+    @JsonIgnore
     private String password;
 
     @ColumnDefault("'ROLE_USER'")
