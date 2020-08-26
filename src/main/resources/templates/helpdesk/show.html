@@ -68,7 +68,7 @@
                                               <a class="link-modify-article" th:href="@{'/helpdesk/questions/' + ${question.id} + '/answers/' + ${data.id} + '/form'}">수정</a>
                                           </li>
                                           <li>
-                                              <a class="link-delete-article" th:href="@{${question.id} + '/answers/' + ${data.id}}">삭제</a>
+                                              <a class="link-delete-article" th:href="@{'/helpdesk/api/questions/' + ${question.id} + '/answers/' + ${data.id}}">삭제</a>
                                           </li>
                                       </ul>
                                   </div>

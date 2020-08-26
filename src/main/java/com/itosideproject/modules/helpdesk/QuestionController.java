@@ -52,7 +52,7 @@ public class QuestionController {
 		Result result = valid(account, question);
 		if (!result.isValid()) {
 			model.addAttribute("errorMessage", result.getErrorMessage());
-			return "/login";
+			return "/";
 		}
 		
 		model.addAttribute("question", question);

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/helpdesk/api/questions/{questionId}/answers")
+@RequestMapping("helpdesk/api/questions/{questionId}/answers")
 public class ApiAnswerController {
 	@Autowired
 	private QuestionRepository questionRepository;
@@ -15,7 +15,7 @@ public class ApiAnswerController {
 	private AnswerRepository answerRepository;
 	
 	@PostMapping("")
-	public Answer create(@CurrentAccount Account account, @PathVariable Long questionId, String contents) {
+	public Answer create(@PathVariable Long questionId, String contents, @CurrentAccount Account account) {
 		if (account == null) {
 			return null;
 		}
@@ -27,7 +27,7 @@ public class ApiAnswerController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public Result delete(@CurrentAccount Account account, @PathVariable Long questionId, @PathVariable Long id) {
+	public Result delete(@PathVariable Long questionId, @PathVariable Long id, @CurrentAccount Account account) {
 		if (account == null) {
 			return Result.fail("로그인해야 합니다.");
 		}
