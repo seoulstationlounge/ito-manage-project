@@ -2,10 +2,13 @@ package com.itosideproject.modules.helpdesk;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itosideproject.modules.account.Account;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@Getter @Setter @EqualsAndHashCode(of = "id")
+@Builder @AllArgsConstructor @NoArgsConstructor
 public class Answer extends AbstractEntity {
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_writer"))
@@ -21,19 +24,9 @@ public class Answer extends AbstractEntity {
 	@JsonProperty
 	private String contents;
 	
-	public Answer() {
-	}
-	
-	public Answer(Account writer, Question question, String contents) {
-		this.writer = writer;
-		this.question = question;
-		this.contents = contents;
-	}
-	
 	public boolean isSameWriter(Account loginUser) {
 		return loginUser.equals(this.writer);
 	}
-
 
 	@Override
 	public String toString() {

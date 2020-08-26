@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/helpdesk/questions/{questionId}/answers")
+@RequestMapping("/helpdesk/api/questions/{questionId}/answers")
 public class ApiAnswerController {
 	@Autowired
 	private QuestionRepository questionRepository;

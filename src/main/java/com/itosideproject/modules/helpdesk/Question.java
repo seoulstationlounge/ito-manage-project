@@ -2,11 +2,14 @@ package com.itosideproject.modules.helpdesk;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.itosideproject.modules.account.Account;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter @Setter @EqualsAndHashCode(of = "id")
+@Builder @AllArgsConstructor @NoArgsConstructor
 public class Question extends AbstractEntity {
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_question_writer"))
@@ -26,14 +29,6 @@ public class Question extends AbstractEntity {
 	@OneToMany(mappedBy="question")
 	@OrderBy("id DESC")
 	private List<Answer> answers;
-	
-	public Question() {}
-	
-	public Question(Account writer, String title, String contents) {
-		this.writer = writer;
-		this.title = title;
-		this.contents = contents;
-	}
 	
 	public void update(String title, String contents) {
 		this.title = title;

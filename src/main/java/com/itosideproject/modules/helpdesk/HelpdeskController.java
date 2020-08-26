@@ -12,7 +12,7 @@ public class HelpdeskController {
 	
 	@GetMapping("/helpdesk")
 	public String helpdeskHome(Model model) {
-		model.addAttribute("questions", questionRepository.findAll());
+		model.addAttribute("questionList", questionRepository.findAll());
 		return "helpdesk/index";
 	}
 }

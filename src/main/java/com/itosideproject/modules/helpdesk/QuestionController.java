@@ -31,14 +31,18 @@ public class QuestionController {
 			return "/login";
 		}
 
-		Question newQuestion = new Question(account, title, contents);
+		Question newQuestion = new Question();
+		newQuestion.setWriter(account);
+		newQuestion.setTitle(title);
+		newQuestion.setContents(contents);
+
 		questionRepository.save(newQuestion);
 		return "redirect:/";
 	}
 	
 	@GetMapping("/{id}")
 	public String show(@PathVariable Long id, Model model) {
-		model.addAttribute("question", questionRepository.findById(id));
+		model.addAttribute("question", questionRepository.findQuestionById(id));
 		return "/helpdesk/show";
 	}
 	
@@ -78,7 +82,7 @@ public class QuestionController {
 		
 		question.update(title, contents);
 		questionRepository.save(question);
-		return String.format("redirect:/questions/%d", id);
+		return String.format("redirect:/helpdesk/questions/%d", id);
 	}
 	
 	@DeleteMapping("/{id}")

@@ -1,61 +1,57 @@
 <!DOCTYPE html>
-<html lang="kr">
-<head>
-{{> /include/header}}
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+    <div th:replace="fragments.html :: main-nav"></div>
+    <link href="/css/styles.css" rel="stylesheet">
 
-<body>
-{{> /include/navigation}}
+    <div class="row justify-content-center" id="main">
 
-<div class="container" id="main">
-   <div class="col-md-12 col-sm-12 col-lg-10 col-lg-offset-1">
-      <div class="panel panel-default qna-list">
-          <ul class="list">
-          	  {{#questions}}
-              <li>
-                  <div class="wrap">
-                      <div class="main">
-                          <strong class="subject">
-                              <a href="/questions/{{id}}">{{title}}</a>
-                          </strong>
-                          <div class="auth-info">
-                              <i class="icon-add-comment"></i>
-                              <span class="time">{{formattedCreateDate}}</span>
-                              <a href="./user/profile.html" class="author">{{writer.userId}}</a>
-                          </div>
-                          <div class="reply" title="댓글">
-                              <i class="icon-reply"></i>
-                              <span class="point">{{countOfAnswer}}</span>
+       <div class="col-sm-8">
+          <div class="panel panel-default qna-list">
+              <ul class="list">
+                  <li th:each="data : ${questionList}">
+                      <div class="wrap">
+                          <div class="main">
+                              <strong class="subject">
+                                  <a th:href="@{'/helpdesk/questions/' + ${data.id}}" th:text="${data.title}"></a>
+                              </strong>
+                              <div class="auth-info">
+                                  <i class="icon-add-comment"></i>
+                                  <span class="time" th:text="${data.formattedCreateDate}"></span>
+                                  <a href="./user/profile.html" class="author" th:text="${data.writer.userName}"></a>
+                              </div>
+                              <div class="reply" title="댓글">
+                                  <i class="icon-reply"></i>
+                                  <span class="point" th:text="${data.countOfAnswer}"></span>
+                              </div>
                           </div>
                       </div>
+                  </li>
+              </ul>
+              <div class="row" style="height: 77px;">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+<!--                      <ul class="pagination center-block" style="display:inline-block;">-->
+<!--                          <li><a href="#">«</a></li>-->
+<!--                          <li><a href="#">1</a></li>-->
+<!--                          <li><a href="#">2</a></li>-->
+<!--                          <li><a href="#">3</a></li>-->
+<!--                          <li><a href="#">4</a></li>-->
+<!--                          <li><a href="#">5</a></li>-->
+<!--                          <li><a href="#">»</a></li>-->
+<!--                      </ul>-->
                   </div>
-              </li>
-              {{/questions}}
-          </ul>
-          <div class="row">
-              <div class="col-md-3"></div>
-              <div class="col-md-6 text-center">
-                  <ul class="pagination center-block" style="display:inline-block;">
-                      <li><a href="#">«</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li><a href="#">»</a></li>
-                </ul>
+                  <div class="col-md-3 qna-write">
+                      <a href="helpdesk/questions/form" class="btn btn-primary pull-right" role="button">요청하기</a>
+                  </div>
               </div>
-              <div class="col-md-3 qna-write">
-                  <a href="/questions/form" class="btn btn-primary pull-right" role="button">요청하기</a>
-              </div>
-          </div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- script references -->
-<script src="js/jquery-2.2.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/scripts.js"></script>
-	</body>
+    <!-- script references -->
+    <div class="fragments.html :: footer"></div>
+    <script src="js/help-scripts.js"></script>
+</body>
 </html>
