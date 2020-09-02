@@ -21,7 +21,8 @@ $(document).ready(function() {
       }
     ],
     select: true,
-    scrollY: 400,
+    scrollY: 600,
+    scrollX: 1000,
     columnDefs: [
       { targets: 0, visible: false }
     ]

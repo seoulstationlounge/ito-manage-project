@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class AbstractEntity {
+
 	@Id
 	@GeneratedValue
 	@JsonProperty
@@ -25,6 +26,7 @@ public class AbstractEntity {
 	
 	@LastModifiedDate
 	private LocalDateTime modifiedDate;
+
 	
 	public Long getId() {
 		return id;

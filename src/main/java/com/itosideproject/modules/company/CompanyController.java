@@ -60,7 +60,6 @@ public class CompanyController {
         }
 
         Company company = companyService.processNewCompany(companyForm);
-//        accountService.login(account);
         return "redirect:/companies";
     }
 

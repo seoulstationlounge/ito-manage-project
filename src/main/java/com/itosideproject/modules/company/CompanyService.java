@@ -38,7 +38,7 @@ public class CompanyService  {
 
     public void updateCompany(CompanyForm companyForm) {
         Company company = companyRepository.findById(companyForm.getId())
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. companyname=" + companyForm.getCompanyName()));
+                .orElseThrow(() -> new IllegalArgumentException("해당 회사가 없습니다. companyname=" + companyForm.getCompanyName()));
 
         modelMapper.map(companyForm, company);
         companyRepository.save(company);

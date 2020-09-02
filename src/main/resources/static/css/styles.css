@@ -110,7 +110,7 @@ h3,h4,h5 {
     border-bottom:1px
 }
 .qna-header {
-    position:relative;padding:1em
+    position:relative;padding:1em;margin-top: 20px;
 }
 
 .article {

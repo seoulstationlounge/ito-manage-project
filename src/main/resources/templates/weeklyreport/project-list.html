@@ -3,29 +3,26 @@
 <head th:replace="fragments.html :: head"></head>
 <body class="bg-light">
     <div th:replace="fragments.html :: main-nav"></div>
-<!--    <div class="alert alert-warning" role="alert" th:if="${account != null && !account?.emailVerified}">-->
-<!--        JOB FLOW 가입을 완료하려면 <a href="#" th:href="@{/check-email(email=${account.email})}" class="alert-link">계정 인증 이메일을 확인</a>하세요.-->
-<!--    </div>-->
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        <!-- Page Heading -->
+
         <div class="row p-3" style="display:flow-root;" sec:authorize="isAuthenticated()">
-            <button type="button" id="deleteVacation" class="btn btn-secondary" style="float:right; margin-right:5px;" sec:authorize="hasRole('ROLE_ADMIN')">
-                삭제
+            <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;">
+                <a class="text-white" id="deleteProjectReport">보고서 삭제</a>
             </button>
             <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;">
-                <a class="text-white" th:href="@{/vacationApply}">휴가 신청</a>
+                <a class="text-white" id="updateProjectReport">보고서 수정</a>
             </button>
             <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;">
-                <a class="text-white" th:href="@{/otApply}">OT 신청</a>
+                <a class="text-white" th:href="@{/project-report}">보고서 입력</a>
             </button>
         </div>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">휴가 명단</h6>
+                <h6 class="m-0 font-weight-bold text-primary">주간 실적</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -33,29 +30,19 @@
                         <thead>
                         <tr>
                             <th>id</th>
-                            <th>사용자</th>
-                            <th>신청일</th>
-                            <th>근무/휴무일</th>
-                            <th>연차/대체</th>
-                            <th>오전</th>
-                            <th>오후</th>
-                            <th>합계</th>
-                            <th>비고</th>
-                            <th>영역</th>
+                            <th>주간계획 시작</th>
+                            <th>주간계획 종료</th>
+                            <th>주간계획 내용</th>
+                            <th>완성도</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="data : ${vacationList}">
+                            <tr th:each="data : ${projectReportList}">
                                 <td th:text="${data.id}"></td>
-                                <td th:text="${data.userName}"></td>
-                                <td th:text="${data.applicationDate}"></td>
-                                <td th:text="${data.startDateTime}"></td>
-                                <td th:text="${data.OverTimeName}"></td>
-                                <td th:text="${data.vacationAm}"></td>
-                                <td th:text="${data.vacationPm}"></td>
-                                <td th:text="${data.vacationSum}"></td>
-                                <td th:text="${data.remark}"></td>
-                                <td th:text="${data.part}"></td>
+                                <td th:text="${data.thisWeekStartDateTime}"></td>
+                                <td th:text="${data.thisWeekEndDateTime}"></td>
+                                <td th:text="${data.thisWeekContext}"></td>
+                                <td th:text="${data.thisWeekPerfection}"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -74,12 +61,10 @@
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
 
-
     <!-- Page level plugins -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
     <!-- Page level custom scripts -->
     <script type="text/javascript" charset="utf8" src="/js/demo/datatables-demo.js"></script>
@@ -101,17 +86,35 @@
 
     <script>
         $(document).ready(function() {
-            $('#deleteVacation').click(function(){
+            $('#updateProjectReport').click(function(){
                 var userData = $('#dataTable').DataTable().rows('.selected').data();
+
+                if( userData[0] == null) {
+                    alert('대상을 선택해 주세요.');
+                    return;
+                }
+
+                var updateId = userData[0][0];
+                location.href="project-report-update/"+updateId;
+            });
+
+            $('#deleteProjectReport').click(function(){
+                var userData = $('#dataTable').DataTable().rows('.selected').data();
+
+                if( userData[0] == null) {
+                    alert('대상을 선택해 주세요.');
+                    return;
+                }
+
                 var deleteId = userData[0][0];
 
                 $.ajax({
                     type: 'DELETE',
-                    url: '/vacation/'+deleteId,
+                    url: '/proejct-report/'+deleteId,
                     contentType:'application/json; charset=utf-8'
                 }).done(function() {
-                    alert('근태 내역이 삭제되었습니다.');
-                    window.location.href = '/vacation';
+                    alert('회원이 삭제되었습니다.');
+                    window.location.href = '/project-report-list';
                 }).fail(function (error) {
                     alert(JSON.stringify(error));
                 });

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+    <div th:replace="fragments.html :: main-nav"></div>
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <form class="needs-validation col-sm-12"
+              th:action="@{/ito-report}"
+              th:object="${itoReportForm}" method="post" novalidate>
+
+            <div class="row p-3" style="display:flow-root;" sec:authorize="isAuthenticated()">
+                <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;">
+                    <a class="text-white" id="deleteWeeklyReport">삭제</a>
+                </button>
+                <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;" onclick="javascript: form.action='/ito-report/update';">
+                    <a class="text-white">수정</a>
+                </button>
+                <button type="submit" class="btn btn-secondary" style="float:right; margin-right:5px;">
+                    <a class="text-white">입력</a>
+                </button>
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary"> 데이터 입력 </h6>
+                </div>
+                <div class="card-body">
+                    <table width="1000">
+                        <tr>
+                            <td colspan="2"><label class="p-2">Category</label></td>
+                            <td width="140px" colspan="2"><input type="text" style="text-align: center" th:field="*{category}" /></td>
+                            <td colspan="2"><label class="p-2">Project Nature</label></td>
+                            <td width="140px" colspan="2"><input type="text" tyle="text-align: center" th:field="*{projectNature}" /></td>
+                            <td colspan="2"><label class="p-2">Ref.No</label></td>
+                            <td width="140px" colspan="2"><input type="text" tyle="text-align: center" th:field="*{refNo}" /></td>
+                            <td colspan="2"></td>
+                            <td width="140px" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><label class="p-2">Task</label></td>
+                            <td colspan="6"><textarea name="contents" id="task" rows="5" class="form-control" th:field="*{task}"></textarea></td>
+
+                            <td colspan="2"><label class="p-3">세부내역</label></td>
+                            <td colspan="6"><textarea name="contents" id="detailContent" rows="5" class="form-control" th:field="*{detailContent}"></textarea></td>
+                        </tr>
+                    </table>
+
+                    <div>
+                        <label class="p-3">요청부서</label>
+                        <input type="text" th:field="*{requestPart}"></input>
+
+                        <label class="p-3">Status</label>
+                        <input type="text"th:field="*{status}"></input>
+                    </div>
+
+                    <div>
+                        <label class="p-3">Planed Start Date</label>
+                        <input type="text" th:field="*{planedStartDate}"></input>
+
+                        <label class="p-3">Planed End Date</label>
+                        <input type="text" th:field="*{planedEndDate}"></input>
+
+                        <label class="p-3">Actual Start Date</label>
+                        <input type="text" th:field="*{actualStartDate}"></input>
+
+                        <label class="p-3">Actual End date</label>
+                        <input type="text" th:field="*{actualEndDate}"></input>
+                    </div>
+
+                    <div>
+                        <label class="p-3">mon</label>
+                        <input type="text" style="width: 50px;" th:field="*{mon}"></input>
+
+                        <label class="p-3">tue</label>
+                        <input type="text" style="width: 50px;" th:field="*{tue}"></input>
+
+                        <label class="p-3">wed</label>
+                        <input type="text" style="width: 50px;" th:field="*{wed}"></input>
+
+                        <label class="p-3">thu</label>
+                        <input type="text" style="width: 50px;" th:field="*{thu}"></input>
+
+                        <label class="p-3">fri</label>
+                        <input type="text" style="width: 50px;" th:field="*{fri}"></input>
+
+                        <label class="p-3">sat</label>
+                        <input type="text" style="width: 50px;" th:field="*{sat}"></input>
+
+                        <label class="p-3">sun</label>
+                        <input type="text" style="width: 50px;" th:field="*{sun}"></input>
+                    </div>
+
+                    <div>
+                        <label class="p-3">합계</label>
+                        <input type="text" style="width: 50px;" th:field="*{sum}"></input>
+
+                        <label class="p-3">예상</label>
+                        <input type="text" style="width: 50px;" th:field="*{prediction}"></input>
+
+                        <label class="p-3">누적</label>
+                        <input type="text" style="width: 50px;" th:field="*{sumTotal}"></input>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">주간 실적</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="display: none;">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Category</th>
+                            <th>Project Nature</th>
+                            <th>Ref.No</th>
+                            <th>Task</th>
+                            <th>세부 내역</th>
+                            <th>요청부서</th>
+                            <th>status</th>
+                            <th>plan start</th>
+                            <th>plan end</th>
+                            <th>Act start</th>
+                            <th>Act end</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                            <th>합계</th>
+                            <th>예상</th>
+                            <th>누적</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="data : ${itoReportList}">
+                                <td th:text="${data.id}"></td>
+                                <td th:text="${data.category}"></td>
+                                <td th:text="${data.projectNature}"></td>
+                                <td th:text="${data.refNo}"></td>
+                                <td th:text="${data.task}"></td>
+                                <td th:text="${data.detailContent}"></td>
+                                <td th:text="${data.requestPart}"></td>
+                                <td th:text="${data.status}"></td>
+                                <td th:text="${data.planedStartDate}"></td>
+                                <td th:text="${data.planedEndDate}"></td>
+                                <td th:text="${data.actualStartDate}"></td>
+                                <td th:text="${data.actualEndDate}"></td>
+                                <td th:text="${data.mon}"></td>
+                                <td th:text="${data.tue}"></td>
+                                <td th:text="${data.wed}"></td>
+                                <td th:text="${data.thu}"></td>
+                                <td th:text="${data.fri}"></td>
+                                <td th:text="${data.sat}"></td>
+                                <td th:text="${data.sun}"></td>
+                                <td th:text="${data.sum}"></td>
+                                <td th:text="${data.prediction}"></td>
+                                <td th:text="${data.sumTotal}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:replace="fragments.html :: footer"></div>
+    <div th:replace="fragments.html :: date-time"></div>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+
+    <!-- Page level plugins -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- Page level custom scripts -->
+    <script type="text/javascript" charset="utf8" src="/js/demo/datatables-demo.js"></script>
+
+    <!-- Page level plugins -->
+    <script type="text/javascript" charset="utf8" src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <!-- button plugins -->
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#updateWeeklyReport').click(function(){
+                var userData = $('#dataTable').DataTable().rows('.selected').data();
+
+                if( userData[0] == null) {
+                    alert('대상을 선택해 주세요.');
+                    return;
+                }
+
+                var updateId = userData[0][0];
+                location.href="monthly-report-update/"+updateId;
+            });
+
+            $('#deleteWeeklyReport').click(function(){
+                var userData = $('#dataTable').DataTable().rows('.selected').data();
+
+                if( userData[0] == null) {
+                    alert('대상을 선택해 주세요.');
+                    return;
+                }
+
+                var deleteId = userData[0][0];
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/monthly-report/'+deleteId,
+                    contentType:'application/json; charset=utf-8'
+                }).done(function() {
+                    alert('회원이 삭제되었습니다.');
+                    window.location.href = '/monthlt-report-list';
+                }).fail(function (error) {
+                    alert(JSON.stringify(error));
+                });
+            });
+
+            $('#dataTable tbody tr').click(function(){
+                var selectData = $('#dataTable').DataTable().rows('.selected').data();
+                debugger;
+            });
+        });
+    </script>
+
+</body>
+</html>

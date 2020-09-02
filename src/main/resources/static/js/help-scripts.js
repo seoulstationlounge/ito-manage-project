@@ -13,13 +13,14 @@ function addAnswer(e) {
 	$.ajax({
 		type : 'post',
 		url : url,
-		data : queryString,
+		contestType: "application/json; charset-utf-8;",
 		dataType : 'json',
+		data : queryString,
 		error : onError,
 		success : onSuccess});
 }
 
-function onError() {
+function onError(xhr, status) {
 	debugger;
 }
 
@@ -27,7 +28,7 @@ function onSuccess(data, status) {
 	console.log(data);
 	debugger;
 	var answerTemplate = $("#answerTemplate").html();
-	var template = answerTemplate.format(data.writer.userId, data.formattedCreateDate, data.contents, data.question.id, data.id);
+	var template = answerTemplate.format(data.writerUserName, data.formattedCreateDate, data.contents, data.questionId, data.id);
 	$(".qna-comment-slipp-articles").prepend(template);
 	
 	$("textarea[name=contents]").val("");

@@ -10,17 +10,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Controller
 @RequestMapping("helpdesk/questions")
 public class QuestionController {
 	@Autowired
 	private QuestionRepository questionRepository;
+
+	@Autowired
+	private AnswerRepository answerRepository;
 	
 	@GetMapping("/form")
-	public String form(@CurrentAccount Account account) {
+	public String form(@CurrentAccount Account account, Model model) {
 		if (account == null) {
 			return "/login";
 		}
+
+		model.addAttribute(account);
 		
 		return "/helpdesk/form";
 	}
@@ -37,12 +45,14 @@ public class QuestionController {
 		newQuestion.setContents(contents);
 
 		questionRepository.save(newQuestion);
-		return "redirect:/";
+		return "redirect:/helpdesk";
 	}
 	
 	@GetMapping("/{id}")
-	public String show(@PathVariable Long id, Model model) {
+	public String show(@CurrentAccount Account account, @PathVariable Long id, Model model) {
 		model.addAttribute("question", questionRepository.findQuestionById(id));
+		model.addAttribute(account);
+
 		return "/helpdesk/show";
 	}
 	
@@ -52,10 +62,12 @@ public class QuestionController {
 		Result result = valid(account, question);
 		if (!result.isValid()) {
 			model.addAttribute("errorMessage", result.getErrorMessage());
-			return "/";
+			return "/account-error";
 		}
-		
+
 		model.addAttribute("question", question);
+		model.addAttribute(account);
+
 		return "/helpdesk/updateForm";
 	}
 	
@@ -93,8 +105,12 @@ public class QuestionController {
 			model.addAttribute("errorMessage", result.getErrorMessage());
 			return "/login";
 		}
-		
+
+		for( Answer answer : question.getAnswers()) {
+			answerRepository.deleteById(answer.getId());
+		}
+
 		questionRepository.deleteById(id);
-		return "redirect:/";
+		return "redirect:/helpdesk";
 	}
 }

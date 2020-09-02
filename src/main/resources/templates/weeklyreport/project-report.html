@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+
+<body class="bg-light">
+
+<div th:replace="fragments.html :: main-nav"></div>
+<!--    <div class="alert alert-warning" role="alert" th:if="${account != null && !account?.emailVerified}">-->
+<!--        JOB FLOW 가입을 완료하려면 <a href="#" th:href="@{/check-email(email=${account.email})}" class="alert-link">계정 인증 이메일을 확인</a>하세요.-->
+<!--    </div>-->
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <table width="800" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
+                   style="border-collapse:collapse;" class="form2" align="center">
+                <tr>
+                    <td align="right">&nbsp;</td>
+                </tr>
+            </table>
+            <table width="800" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
+                   style="border-collapse:collapse;" class="form10 col-sm-6" align="center">
+                <tr valign="middle">
+                    <td width="643" height="93" align="center" class="form23b">
+                        주간 실적 및 계획
+                    </td>
+                </tr>
+            </table>
+            <form class="needs-validation col-sm-12"
+                  th:action="@{/project-report}"
+                  th:object="${projectReportForm}" method="post" novalidate>
+                <table width="800" height="60" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
+                       style="border-collapse:collapse;" class="form10 col-sm-6" align="center">
+                    <tr class="col-sm-6">
+                        <td>
+                            <input type="date" class="form-control" required th:field="*{thisWeekStartDateTime}">
+                        </td>
+                        <td class="col-sm-4 align-items-center">
+                            <span>
+                                ~
+                            </span>
+                        </td>
+                        <td>
+                            <input type="date" class="form-control" required th:field="*{thisWeekEndDateTime}">
+                        </td>
+                    </tr>
+                </table>
+                <table width="800" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000"
+                   style="border-collapse:collapse;" align="center" class="form10">
+                    <tr>
+                        <td height="40" align="center" style="width: 700px" bgcolor="#D9E2F3" class="form10b">
+                            금주실적
+
+                        </td>
+                        <td height="40" align="center" style="width: 120px" bgcolor="#D9E2F3" class="form10b">계획/실적(%)</td>
+                        <td height="40" align="center" style="width: 700px" bgcolor="#D9E2F3" class="form10b">차주계획</td>
+                        <td height="40" align="center" style="width: 120px" bgcolor="#D9E2F3" class="form10b">계획/실적(%)</td>
+                    </tr>
+                    <tr>
+                        <td height="330" colspan="1" align="center" class="form5">
+                            <textarea name="contents" id="thisWeekContext" rows="13" class="form-control" th:field="*{thisWeekContext}"></textarea>
+                        </td>
+                        <td align="center" class="form5">
+                            <textarea name="contents" id="thisWeekPerfection" rows="13" class="form-control" th:field="*{thisWeekPerfection}"></textarea>
+                        </td>
+                        <td align="center" class="form5">
+                            <textarea name="contents" id="nextWeekContext" rows="13" class="form-control" th:field="*{nextWeekContext}"></textarea>
+                        </td>
+                        <td align="center" class="form5">
+                            <textarea name="contents" id="nextWeekPerfection" rows="13" class="form-control" th:field="*{nextWeekPerfection}"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <table width="800" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000"
+                       style="border-collapse:collapse;" align="center" class="form10">
+                    <tr style="border-left: hidden; border-right: hidden; border-bottom: hidden;">
+                        <td height="40" colspan="6">
+                            <div class="form-group">
+                                <button id="otApplySubmit" style="margin-top: 10px" class="btn btn-primary btn-block" type="submit"
+                                        aria-describedby="submitHelp">작성 완료
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments.html :: footer"></div>
+<div th:replace="fragments.html :: date-time"></div>
+<script th:replace="fragments.html :: editor-script"></script>
+<script th:replace="fragments.html :: tooltip"></script>
+
+</body>
+</html>
