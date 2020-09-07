@@ -34,8 +34,10 @@ public class AccountController {
     }
 
     @GetMapping("/sign-up")
-    public String signUpForm(Model model) {
+    public String signUpForm(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
         model.addAttribute(new SignUpForm());
+
         return "account/sign-up";
     }
 
@@ -138,7 +140,7 @@ public class AccountController {
             Account accountLoaded = accountRepository.findAccountWithTagsAndZonesById(account.getId());
             model.addAttribute(accountLoaded);
 
-            List<Account> accountList = accountRepository.findAll();
+            List<Account> accountList = accountRepository.findAccountsByActiveAccount("A");
             model.addAttribute("accountList", accountList);
             return "account/members";
         }
@@ -146,12 +148,10 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @GetMapping("/update-member/{nickname}")
-    public String viewUpdateForm(@PathVariable String nickname, Model model, @CurrentAccount Account account) {
-        Account accountToView = accountService.getAccount(nickname);
-        model.addAttribute(accountToView);
+    @GetMapping("/update-member/{id}")
+    public String viewUpdateForm(@PathVariable Long id, Model model, @CurrentAccount Account account) {
 
-        Account accountLoaded = accountRepository.findByNickname(nickname);
+        Account accountLoaded = accountRepository.findAccountById(id);
         model.addAttribute("SignUpForm", accountLoaded);
         return "account/update-member";
     }

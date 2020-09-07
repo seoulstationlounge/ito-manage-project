@@ -11,6 +11,27 @@
         <div class="row justify-content-center">
             <form class="needs-validation col-sm-6" action="#"
                   th:action="@{/sign-up}" th:object="${signUpForm}" method="post" novalidate>
+
+                <div class="form-group">
+                    <label for="userName">성명</label>
+                    <input id="userName" type="text" th:field="*{userName}" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="companyName">회사이름</label>
+                    <input id="companyName" type="text" th:field="*{companyName}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="startWorkTime">입사일자</label>
+                    <input id="startWorkTime" type="text" th:field="*{startWorkTime}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="endWorkTime">퇴사일자</label>
+                    <input id="endWorkTime" type="text" th:field="*{endWorkTime}" class="form-control">
+                </div>
+
                 <div class="form-group">
                     <label for="nickname">회사계정</label>
                     <input id="nickname" type="text" th:field="*{nickname}" class="form-control"
@@ -45,23 +66,53 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="companyName">회사이름</label>
-                    <input id="companyName" type="text" th:field="*{companyName}" class="form-control" required>
-                </div>
-
-                <div class="form-group">
                     <label for="part">파트구분</label>
-                    <input id="part" type="text" th:field="*{part}" class="form-control" required>
+                    <input id="part" type="text" th:field="*{part}" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="system">시스템구분</label>
-                    <input id="system" type="text" th:field="*{system}" class="form-control" required>
+                    <input id="system" type="text" th:field="*{system}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="bizGroup">Biz Group</label>
+                    <input id="bizGroup" type="text" th:field="*{bizGroup}" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="contactNumber">내선전화번호</label>
-                    <input id="contactNumber" type="text" th:field="*{contactNumber}" class="form-control" required>
+                    <input id="contactNumber" type="text" th:field="*{contactNumber}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="engUserName">English Name</label>
+                    <input id="engUserName" type="text" th:field="*{engUserName}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="dlGroupName">DL-Group-Name</label>
+                    <input id="dlGroupName" type="text" th:field="*{dlGroupName}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input id="cardNumber" type="text" th:field="*{cardNumber}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="emergencyNumber">긴급전화번호</label>
+                    <input id="emergencyNumber" type="text" th:field="*{emergencyNumber}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="annualVacation">연차 갯수</label>
+                    <input id="annualVacation" type="text" th:field="*{annualVacation}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">권한</label>
+                    <input id="role" type="text" th:field="*{role}" class="form-control">
                 </div>
 
                 <div class="form-group">

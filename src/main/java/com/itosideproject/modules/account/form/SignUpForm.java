@@ -1,11 +1,13 @@
 package com.itosideproject.modules.account.form;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 
 @Data
 public class SignUpForm {
@@ -32,5 +34,26 @@ public class SignUpForm {
     private String system;
 
     private String contactNumber;
+
+    private String userName;
+
+    @ColumnDefault("'ROLE_USER'")
+    private String role;
+
+    private String emergencyNumber;
+
+    private LocalDate startWorkTime;
+
+    private LocalDate endWorkTime;
+
+    private double annualVacation;
+
+    private String bizGroup;
+
+    private String engUserName;
+
+    private String dlGroupName;
+
+    private String cardNumber;
 
 }

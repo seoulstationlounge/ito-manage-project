@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 public interface AccountRepository extends JpaRepository<Account, Long>, QuerydslPredicateExecutor<Account> {
 
@@ -15,6 +17,10 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Queryds
     Account findByEmail(String email);
 
     Account findByNickname(String nickname);
+
+    Account findAccountById(Long id);
+
+    List<Account> findAccountsByActiveAccount(String activeAccount);
 
     @EntityGraph(attributePaths = {"tags", "zones"})
     Account findAccountWithTagsAndZonesById(Long id);

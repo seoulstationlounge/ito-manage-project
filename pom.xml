@@ -12,7 +12,7 @@
     <artifactId>itosideproject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>itosideproject</name>
-    <description>Sitosideproject web service</description>
+    <description>itosideproject web service</description>
 
     <properties>
         <java.version>11</java.version>

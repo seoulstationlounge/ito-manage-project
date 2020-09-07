@@ -91,7 +91,7 @@ public class ProjectController {
         return "redirect:/project-report-list";
     }
 
-    @DeleteMapping("/weekly-report/{id}")
+    @DeleteMapping("/project-report/{id}")
     public ResponseEntity deleteCompany(@PathVariable Long id, Model model, RedirectAttributes attributes) {
         ProjectReport projectReport = projectReportRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 보고서가 없습니다."));

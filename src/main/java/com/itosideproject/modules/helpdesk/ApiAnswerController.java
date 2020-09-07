@@ -32,9 +32,10 @@ public class ApiAnswerController {
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("writerUserName", reAnswer.getWriter().getUserName());
-		map.put("contest", reAnswer.getContents());
+		map.put("content", reAnswer.getContents());
 		map.put("questionId",reAnswer.getQuestion().getId());
-		map.put("id",reAnswer.getId());
+		map.put("formattedCreateDate",reAnswer.getFormattedCreateDate());
+		map.put("profileImage",reAnswer.getWriter().getProfileImage());
 
 		return ResponseEntity.ok(map);
 	}

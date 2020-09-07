@@ -1,6 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
   $('#dataTable').show();
+
   $('#dataTable').DataTable({
     dom : 'Bfrtip',
     buttons: [
@@ -21,11 +22,13 @@ $(document).ready(function() {
       }
     ],
     select: true,
-    scrollY: 600,
+    scrollY: 423,
     scrollX: 1000,
     columnDefs: [
       { targets: 0, visible: false }
     ]
   });
+
+  $("#dataTable").DataTable().draw();
 
 });

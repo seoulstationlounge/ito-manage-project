@@ -34,16 +34,36 @@
                         <tr>
                             <th>id</th>
                             <th>이메일</th>
-                            <th>회사아이디</th>
                             <th>회사이름</th>
+                            <th>입사일자</th>
+                            <th>퇴사일자</th>
+                            <th>파트구분</th>
+                            <th>시스템구분</th>
+                            <th>Biz Group</th>
+                            <th>회사아이디</th>
+                            <th>전화번호</th>
+                            <th>English-Name</th>
+                            <th>DL-Group-Name</th>
+                            <th>Card Number</th>
+                            <th>비상연락번호</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="data : ${accountList}">
                             <td th:text="${data.id}"></td>
                             <td th:text="${data.email}"></td>
-                            <td th:text="${data.nickname}"></td>
                             <td th:text="${data.companyName}"></td>
+                            <td th:text="${data.startWorkTime}"></td>
+                            <td th:text="${data.endWorkTime}"></td>
+                            <td th:text="${data.part}"></td>
+                            <td th:text="${data.system}"></td>
+                            <td th:text="${data.bizGroup}"></td>
+                            <td th:text="${data.nickname}"></td>
+                            <td th:text="${data.contactNumber}"></td>
+                            <td th:text="${data.engUserName}"></td>
+                            <td th:text="${data.dlGroupName}"></td>
+                            <td th:text="${data.cardNumber}"></td>
+                            <td th:text="${data.emergencyNumber}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -81,27 +101,28 @@
     <script>
         $(document).ready(function() {
             $('#updateMember').click(function(){
-                var userData = $('#dataTable').DataTable().rows('.selected').data();
+                let userData = $('#dataTable').DataTable().rows('.selected').data();
 
                 if( userData[0] == null) {
                     alert('대상을 선택해 주세요.');
                     return;
                 }
 
-                var updateId = userData[0][2];
+                let updateId = userData[0][0];
 
+                debugger;
                 location.href="update-member/"+updateId;
             });
 
             $('#deleteMember').click(function(){
-                var userData = $('#dataTable').DataTable().rows('.selected').data();
+                let userData = $('#dataTable').DataTable().rows('.selected').data();
 
                 if( userData[0] == null) {
                     alert('대상을 선택해 주세요.');
                     return;
                 }
 
-                var deleteId = userData[0][0];
+                let deleteId = userData[0][0];
 
                 $.ajax({
                     type: 'DELETE',

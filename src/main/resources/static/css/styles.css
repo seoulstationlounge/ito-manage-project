@@ -1,20 +1,5 @@
-/*
-A custom Bootstrap 3.2 'Google Plus style' theme
-from http://bootply.com
-
-This CSS code should follow the 'bootstrap.css'
-in your HTML file.
-
-license: MIT
-author: bootply.com
-*/
-
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
-body {
-  background-color:#e0e0e0;
-  -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-}
+
 .navbar-default {background-color:#f4f4f4;margin-top:50px;border-width:0;z-index:5;}
 .navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > li:hover > a {border:0 solid #4285f4;border-bottom-width:2px;font-weight:800;background-color:transparent;}
 .navbar-default .dropdown-menu {background-color:#ffffff;}
@@ -164,6 +149,11 @@ h3,h4,h5 {
 
 @media (max-width: 768px) {
     .qna-list .list{ margin:0 -1em  }
+
+    .jumbotron {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
 }
 
 .qna-list .list > li {
@@ -186,7 +176,7 @@ h3,h4,h5 {
 @media (max-width: 979px){.qna-list .list .reply .icon-reply{left:.5em}
 }.qna-list .list .reply .point{position:relative;z-index:1;color:#aaa;font-size:2em;line-height:2em;letter-spacing:-.2em}
 .qna-header{border-bottom:4px solid #efefef}
-.qna-title{margin-bottom:0}
+.qna-title{margin-bottom:0; padding-left: 30px;}
 .qna-nav{padding-bottom:.67em;}
 .qna-nav .divider{padding-left:.4em;padding-right:.4em;font-size:.8em;color:#dadada}
 .qna-comment .article{border-bottom:1px solid #dfdfdf;}
@@ -201,3 +191,184 @@ h3,h4,h5 {
     padding-right: 2.5em;
 }
 
+.container {
+    max-width: 100%;
+}
+
+.tagify-outside{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#study-logo {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+#study-logo img {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body,
+input,
+button,
+select,
+optgroup,
+textarea,
+.tooltip,
+.popover {
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+table th {
+    font-weight: lighter;
+}
+
+mark {
+    padding: 0;
+    background: transparent;
+    background: linear-gradient(to right, #f0ad4e 50%, transparent 50%);
+    background-position: right bottom;
+    background-size: 200% 100%;
+    transition: all .5s ease;
+    color: #fff;
+}
+
+mark.animate {
+    background-position: left bottom;
+    color: #000;
+}
+
+.jumbotron {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    background-color: #fff;
+}
+
+.jumbotron p:last-child {
+    margin-bottom: 0;
+}
+
+.jumbotron h1 {
+    font-weight: 300;
+}
+
+.jumbotron .container {
+    max-width: 40rem;
+}
+
+.form11b {
+    font-family: "맑은 고딕";
+    font-size: 11pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+    font-weight:bold;
+}
+.form11 {
+    font-family: "맑은 고딕";
+    font-size: 11pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+}
+.form10b {
+    font-family: "맑은 고딕";
+    font-size: 10pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+    font-weight:bold;
+}
+.form10 {
+    font-family: "맑은 고딕";
+    font-size: 10pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+}
+.form5 {
+    font-family: "맑은 고딕";
+    font-size: 5pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+}
+.form5b {
+    font-family: "맑은 고딕";
+    font-size: 5pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+    font-weight:bold;
+}
+.form13b {
+    font-family: "맑은 고딕";
+    font-size: 13pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+    font-weight:bold;
+}
+.form13b {
+    font-family: "맑은 고딕";
+    font-size: 13pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+}
+.form23b {
+    font-family: "맑은 고딕";
+    font-size: 23pt;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.form2 {	font-family: "맑은 고딕";
+    font-size: 12px;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing:0px;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-default {
+    border-color: #ddd;
+}
+
+.pull-right {
+    float: right!important;
+}
+
+.qna-write {
+    padding-top: 1.4em;
+    padding-right: 2.5em;
+}
+
+.ito-list-input{width:90px;}
+
+.ito-table tr td label{width:93px; padding: 5px;}
+
+.ito-table tr td{text-align: center;}

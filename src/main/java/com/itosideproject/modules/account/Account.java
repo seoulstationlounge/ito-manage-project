@@ -58,6 +58,17 @@ public class Account {
 
     private double annualVacation;
 
+    private String bizGroup;
+
+    private String engUserName;
+
+    private String dlGroupName;
+
+    private String cardNumber;
+
+    @ColumnDefault("'A'")
+    private String activeAccount;
+
     private boolean emailVerified;
 
     private String emailCheckToken;

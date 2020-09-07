@@ -11,11 +11,13 @@
               th:action="@{/ito-report}"
               th:object="${itoReportForm}" method="post" novalidate>
 
+            <input id="id" type="text" th:field="*{id}" style="display: none">
+
             <div class="row p-3" style="display:flow-root;" sec:authorize="isAuthenticated()">
                 <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;">
                     <a class="text-white" id="deleteWeeklyReport">삭제</a>
                 </button>
-                <button type="button" class="btn btn-secondary" style="float:right; margin-right:5px;" onclick="javascript: form.action='/ito-report/update';">
+                <button type="submit" class="btn btn-secondary" style="float:right; margin-right:5px;" onclick="javascript: form.action='/ito-report/update';">
                     <a class="text-white">수정</a>
                 </button>
                 <button type="submit" class="btn btn-secondary" style="float:right; margin-right:5px;">
@@ -28,82 +30,74 @@
                     <h6 class="m-0 font-weight-bold text-primary"> 데이터 입력 </h6>
                 </div>
                 <div class="card-body">
-                    <table width="1000">
-                        <tr>
-                            <td colspan="2"><label class="p-2">Category</label></td>
-                            <td width="140px" colspan="2"><input type="text" style="text-align: center" th:field="*{category}" /></td>
-                            <td colspan="2"><label class="p-2">Project Nature</label></td>
-                            <td width="140px" colspan="2"><input type="text" tyle="text-align: center" th:field="*{projectNature}" /></td>
-                            <td colspan="2"><label class="p-2">Ref.No</label></td>
-                            <td width="140px" colspan="2"><input type="text" tyle="text-align: center" th:field="*{refNo}" /></td>
-                            <td colspan="2"></td>
-                            <td width="140px" colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><label class="p-2">Task</label></td>
-                            <td colspan="6"><textarea name="contents" id="task" rows="5" class="form-control" th:field="*{task}"></textarea></td>
+                    <table class="ito-table" width="100%">
+                        <tbody>
+                            <tr>
+                                <td><label class="form13b">Category</label></td>
+                                <td><input id="category" class="ito-list-input" type="text" th:field="*{category}" /></td>
+                                <td><label class="form13b">Project Nature</label></td>
+                                <td><input id="projectNature" class="ito-list-input" type="text" th:field="*{projectNature}" /></td>
+                                <td><label class="form13b">Ref.No</label></td>
+                                <td><input id="refNo" class="ito-list-input" type="text" th:field="*{refNo}" /></td>
+                                <td><label class="form13b">요청부서</label></td>
+                                <td><input id="requestPart" class="ito-list-input" type="text" th:field="*{requestPart}"></input></td>
+                                <td><label class="form13b">Status</label></td>
+                                <td><input id="status" class="ito-list-input" type="text"th:field="*{status}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label class="form13b">Task</label></td>
+                                <td colspan="5"><textarea id="task" rows="5" class="form-control" th:field="*{task}"></textarea></td>
 
-                            <td colspan="2"><label class="p-3">세부내역</label></td>
-                            <td colspan="6"><textarea name="contents" id="detailContent" rows="5" class="form-control" th:field="*{detailContent}"></textarea></td>
-                        </tr>
+                                <td><label class="form13b">세부내역</label></td>
+                                <td colspan="5"><textarea id="detailContent" rows="5" class="form-control" th:field="*{detailContent}"></textarea></td>
+                            </tr>
+
+                            <tr>
+                                <td><label class="form13b">Planed Start</label></td>
+                                <td colspan="2"><input type="date" id="planedStartDate" class="form-control" aria-describedby="startOtTimeHelp" th:field="*{planedStartDate}" required></td>
+                                <td><label class="form13b">Planed End</label></td>
+                                <td colspan="2"><input type="date" id="planedEndDate" class="form-control" aria-describedby="startOtTimeHelp" th:field="*{planedEndDate}" required></td>
+                                <td><label class="form13b">Actual Start</label></td>
+                                <td colspan="2"><input type="date" id="actualStartDate" class="form-control" aria-describedby="startOtTimeHelp" th:field="*{actualStartDate}" required></td>
+                                <td><label class="form13b">Actual End</label></td>
+                                <td colspan="2"><input type="date" id="actualEndDate" class="form-control" aria-describedby="startOtTimeHelp" th:field="*{actualEndDate}" required></td>
+                            </tr>
+
+                            <tr>
+                                <td><label class="form13b">mon</label></td>
+                                <td><input id="mon" class="ito-list-input" type="text" th:field="*{mon}"></input></td>
+
+                                <td><label class="form13b">tue</label></td>
+                                <td><input id="tue" class="ito-list-input" type="text" th:field="*{tue}"></input></td>
+
+                                <td><label class="form13b">wed</label></td>
+                                <td><input id="wed" class="ito-list-input" type="text" th:field="*{wed}"></input></td>
+
+                                <td><label class="form13b">thu</label></td>
+                                <td><input id="thu" class="ito-list-input" type="text" th:field="*{thu}"></input></td>
+
+                                <td><label class="form13b">fri</label></td>
+                                <td><input id="fri" class="ito-list-input" type="text" th:field="*{fri}"></input></td>
+
+                                <td><label class="form13b">sat</label></td>
+                                <td><input id="sat" class="ito-list-input" type="text" th:field="*{sat}"></input></td>
+
+                                <td><label class="form13b">sun</label></td>
+                                <td><input id="sun" class="ito-list-input" type="text" th:field="*{sun}"></input></td>
+                            </tr>
+
+                            <tr>
+                                <td><label class="form13b">합계</label></td>
+                                <td><input id="sum" class="ito-list-input" type="text" th:field="*{sum}"></input></td>
+
+                                <td><label class="form13b">예상</label></td>
+                                <td><input id="prediction" class="ito-list-input" type="text" th:field="*{prediction}"></input></td>
+
+                                <td><label class="form13b">누적</label></td>
+                                <td><input id="sumTotal" class="ito-list-input" type="text" th:field="*{sumTotal}"></input></td>
+                            </tr>
+                        </tbody>
                     </table>
-
-                    <div>
-                        <label class="p-3">요청부서</label>
-                        <input type="text" th:field="*{requestPart}"></input>
-
-                        <label class="p-3">Status</label>
-                        <input type="text"th:field="*{status}"></input>
-                    </div>
-
-                    <div>
-                        <label class="p-3">Planed Start Date</label>
-                        <input type="text" th:field="*{planedStartDate}"></input>
-
-                        <label class="p-3">Planed End Date</label>
-                        <input type="text" th:field="*{planedEndDate}"></input>
-
-                        <label class="p-3">Actual Start Date</label>
-                        <input type="text" th:field="*{actualStartDate}"></input>
-
-                        <label class="p-3">Actual End date</label>
-                        <input type="text" th:field="*{actualEndDate}"></input>
-                    </div>
-
-                    <div>
-                        <label class="p-3">mon</label>
-                        <input type="text" style="width: 50px;" th:field="*{mon}"></input>
-
-                        <label class="p-3">tue</label>
-                        <input type="text" style="width: 50px;" th:field="*{tue}"></input>
-
-                        <label class="p-3">wed</label>
-                        <input type="text" style="width: 50px;" th:field="*{wed}"></input>
-
-                        <label class="p-3">thu</label>
-                        <input type="text" style="width: 50px;" th:field="*{thu}"></input>
-
-                        <label class="p-3">fri</label>
-                        <input type="text" style="width: 50px;" th:field="*{fri}"></input>
-
-                        <label class="p-3">sat</label>
-                        <input type="text" style="width: 50px;" th:field="*{sat}"></input>
-
-                        <label class="p-3">sun</label>
-                        <input type="text" style="width: 50px;" th:field="*{sun}"></input>
-                    </div>
-
-                    <div>
-                        <label class="p-3">합계</label>
-                        <input type="text" style="width: 50px;" th:field="*{sum}"></input>
-
-                        <label class="p-3">예상</label>
-                        <input type="text" style="width: 50px;" th:field="*{prediction}"></input>
-
-                        <label class="p-3">누적</label>
-                        <input type="text" style="width: 50px;" th:field="*{sumTotal}"></input>
-                    </div>
-
                 </div>
             </div>
         </form>
@@ -211,43 +205,54 @@
 
     <script>
         $(document).ready(function() {
-            $('#updateWeeklyReport').click(function(){
-                var userData = $('#dataTable').DataTable().rows('.selected').data();
-
-                if( userData[0] == null) {
-                    alert('대상을 선택해 주세요.');
-                    return;
-                }
-
-                var updateId = userData[0][0];
-                location.href="monthly-report-update/"+updateId;
-            });
-
             $('#deleteWeeklyReport').click(function(){
-                var userData = $('#dataTable').DataTable().rows('.selected').data();
+                let userData = $('#dataTable').DataTable().rows('.selected').data();
 
                 if( userData[0] == null) {
                     alert('대상을 선택해 주세요.');
                     return;
                 }
 
-                var deleteId = userData[0][0];
+                let deleteId = userData[0][0];
 
                 $.ajax({
                     type: 'DELETE',
-                    url: '/monthly-report/'+deleteId,
+                    url: '/ito-report/'+deleteId,
                     contentType:'application/json; charset=utf-8'
                 }).done(function() {
-                    alert('회원이 삭제되었습니다.');
-                    window.location.href = '/monthlt-report-list';
+                    alert('Weekly가 삭제되었습니다.');
+                    window.location.href = '/ito-report-list';
                 }).fail(function (error) {
                     alert(JSON.stringify(error));
                 });
             });
 
-            $('#dataTable tbody tr').click(function(){
-                var selectData = $('#dataTable').DataTable().rows('.selected').data();
-                debugger;
+            $('#dataTable tbody').on('click', 'tr', function(){
+                let selectData = $('#dataTable').DataTable().row( this ).data();
+
+                $('#id').val(selectData[0]);
+
+                $('#category').val(selectData[1]);
+                $('#projectNature').val(selectData[2]);
+                $('#refNo').val(selectData[3]);
+                $('#requestPart').val(selectData[6]);
+                $('#status').val(selectData[7]);
+
+                $('#task').val(selectData[4]);
+                $('#detailContent').val(selectData[5]);
+
+                $('#planedStartDate').val(selectData[8]);
+                $('#planedEndDate').val(selectData[9]);
+                $('#actualStartDate').val(selectData[10]);
+                $('#actualEndDate').val(selectData[11]);
+
+                $('#mon').val(selectData[12]);
+                $('#tue').val(selectData[13]);
+                $('#wed').val(selectData[14]);
+                $('#thu').val(selectData[15]);
+                $('#fri').val(selectData[16]);
+                $('#sat').val(selectData[17]);
+                $('#sun').val(selectData[18]);
             });
         });
     </script>

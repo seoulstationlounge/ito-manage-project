@@ -15,7 +15,7 @@
                   <article class="article">
                       <div class="article-header">
                           <div class="article-header-thumb">
-<!--                              <img src="https://graph.facebook.com/v2.3/100000059371774/picture" class="article-author-thumb" alt="">-->
+                              <img th:src="${question.writer.profileImage}" class="article-author-thumb" alt="">
                           </div>
                           <div class="article-header-text">
                               <a href="#" class="article-author-name" th:text="${question.writer.userName}"></a>
@@ -48,10 +48,10 @@
                       <div class="qna-comment-slipp">
                           <p class="qna-comment-count"><strong th:text="${question.countOfAnswer}"></strong>개의 의견</p>
                           <div class="qna-comment-slipp-articles">
-                              <article class="article" id="answer-1405" th:each="data : ${question.answers}">
+                              <article class="article" th:id="'answer' + ${data.id}" id="answer-1405" th:each="data : ${question.answers}">
                                   <div class="article-header">
                                       <div class="article-header-thumb">
-<!--                                          <img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">-->
+                                          <img th:src="${data.writer.profileImage}" class="article-author-thumb" alt="">
                                       </div>
                                       <div class="article-header-text">
                                           <a href="#" class="article-author-name" th:text="${data.writer.userName}"></a>
@@ -92,7 +92,7 @@
         <article class="article">
             <div class="article-header">
                 <div class="article-header-thumb">
-<!--                    <img src="https://graph.facebook.com/v2.3/1324855987/picture" class="article-author-thumb" alt="">-->
+                    <img src="{5}" width="40" height="40" class="rounded border"/>
                 </div>
                 <div class="article-header-text">
                     {0}
