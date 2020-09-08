@@ -52,7 +52,9 @@ public class ProjectController {
     }
 
     @GetMapping("/project-report")
-    public String ProejctReportForm(Model model) {
+    public String ProejctReportForm(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+
         model.addAttribute(new ProjectReportForm());
         return "weeklyreport/project-report";
     }

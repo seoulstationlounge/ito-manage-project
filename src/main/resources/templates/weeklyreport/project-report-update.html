@@ -30,7 +30,6 @@
             <form class="needs-validation col-sm-12"
                   th:action="@{/project-report/update}"
                   th:object="${projectReportForm}" method="post" novalidate>
-
                 <div class="form-group">
                     <input id="id" type="text" th:field="*{id}" style="display: none">
                 </div>
@@ -38,13 +37,15 @@
                 <table width="800" height="60" border="0" cellspacing="0" cellpadding="0" bordercolor="#ffffff"
                        style="border-collapse:collapse;" class="form10 col-sm-6" align="center">
                     <tr class="col-sm-6">
-                        <td class="col-sm-4">
+                        <td>
                             <input type="date" class="form-control" required th:field="*{thisWeekStartDateTime}">
                         </td>
-                        <td class="col-sm-4">
-                            ~
+                        <td class="col-sm-4" style="text-align: center;">
+                            <span>
+                                ~
+                            </span>
                         </td>
-                        <td class="col-sm-4">
+                        <td>
                             <input type="date" class="form-control" required th:field="*{thisWeekEndDateTime}">
                         </td>
                     </tr>
