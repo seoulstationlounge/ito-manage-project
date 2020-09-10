@@ -1,5 +1,6 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
+
   $('#dataTable').show();
 
   $('#dataTable').DataTable({
@@ -22,8 +23,8 @@ $(document).ready(function() {
       }
     ],
     select: true,
-    scrollY: 423,
-    scrollX: 1000,
+    scrollY: true,
+    scrollX: true,
     columnDefs: [
       { targets: 0, visible: false }
     ]

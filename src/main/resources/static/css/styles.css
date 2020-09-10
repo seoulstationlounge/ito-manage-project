@@ -24,7 +24,7 @@ button {
 }
 textarea {
  resize: none;
- outline: 0; 
+ outline: 0;
 }
 .panel .btn i,.btn span{
  color:#666666;
@@ -53,8 +53,8 @@ textarea {
 .list-group-item:first-child,.list-group-item:last-child {
  border-radius:0;
 }
-h3,h4,h5 { 
- border:0 solid #efefef; 
+h3,h4,h5 {
+ border:0 solid #efefef;
  border-bottom-width:1px;
  padding-bottom:10px;
 }
@@ -176,7 +176,7 @@ h3,h4,h5 {
 @media (max-width: 979px){.qna-list .list .reply .icon-reply{left:.5em}
 }.qna-list .list .reply .point{position:relative;z-index:1;color:#aaa;font-size:2em;line-height:2em;letter-spacing:-.2em}
 .qna-header{border-bottom:4px solid #efefef}
-.qna-title{margin-bottom:0; padding-left: 30px;}
+.qna-title{margin-bottom:0}
 .qna-nav{padding-bottom:.67em;}
 .qna-nav .divider{padding-left:.4em;padding-right:.4em;font-size:.8em;color:#dadada}
 .qna-comment .article{border-bottom:1px solid #dfdfdf;}
@@ -215,10 +215,6 @@ h3,h4,h5 {
     overflow: hidden;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
 body,
 input,
 button,
@@ -228,10 +224,6 @@ textarea,
 .tooltip,
 .popover {
     font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-table th {
-    font-weight: lighter;
 }
 
 mark {
@@ -275,6 +267,7 @@ mark.animate {
     text-decoration: none;
     letter-spacing:0px;
     font-weight:bold;
+    text-align: center;
 }
 .form11 {
     font-family: "맑은 고딕";
@@ -282,6 +275,7 @@ mark.animate {
     color: #000000;
     text-decoration: none;
     letter-spacing:0px;
+    text-align: center;
 }
 .form10b {
     font-family: "맑은 고딕";
@@ -290,6 +284,7 @@ mark.animate {
     text-decoration: none;
     letter-spacing:0px;
     font-weight:bold;
+    text-align: center;
 }
 .form10 {
     font-family: "맑은 고딕";
@@ -297,6 +292,7 @@ mark.animate {
     color: #000000;
     text-decoration: none;
     letter-spacing:0px;
+    text-align: center;
 }
 .form5 {
     font-family: "맑은 고딕";
@@ -304,6 +300,7 @@ mark.animate {
     color: #000000;
     text-decoration: none;
     letter-spacing:0px;
+    text-align: center;
 }
 .form5b {
     font-family: "맑은 고딕";
@@ -312,6 +309,7 @@ mark.animate {
     text-decoration: none;
     letter-spacing:0px;
     font-weight:bold;
+    text-align: center;
 }
 .form13b {
     font-family: "맑은 고딕";
@@ -320,6 +318,7 @@ mark.animate {
     text-decoration: none;
     letter-spacing:0px;
     font-weight:bold;
+    text-align: center;
 }
 .form13b {
     font-family: "맑은 고딕";
@@ -327,6 +326,7 @@ mark.animate {
     color: #000000;
     text-decoration: none;
     letter-spacing:0px;
+    text-align: center;
 }
 .form23b {
     font-family: "맑은 고딕";
@@ -336,6 +336,7 @@ mark.animate {
     letter-spacing:0px;
     font-weight:bold;
     text-decoration:underline;
+    text-align: center;
 }
 
 .form2 {	font-family: "맑은 고딕";
@@ -343,6 +344,7 @@ mark.animate {
     color: #000000;
     text-decoration: none;
     letter-spacing:0px;
+    text-align: center;
 }
 
 .panel {

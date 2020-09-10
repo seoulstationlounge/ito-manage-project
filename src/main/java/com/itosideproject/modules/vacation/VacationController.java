@@ -35,10 +35,16 @@ public class VacationController {
     @GetMapping("/vacation")
     public String viewItoVacation(@CurrentAccount Account account, Model model) {
         if (account != null) {
-            Account accountLoaded = accountRepository.findAccountWithTagsAndZonesById(account.getId());
-            model.addAttribute(accountLoaded);
+            model.addAttribute(account);
 
-            List<Vacation> vacationList = vacationRepository.findAll();
+            List<Vacation> vacationList;
+
+            if ( account.getRole().equals("ROLE_ADMIN") ) {
+                vacationList = vacationRepository.findAll();
+            } else {
+                vacationList = vacationRepository.findVacationsById(account.getId());
+            }
+
             model.addAttribute("vacationList", vacationList);
 
             return "vacation/vacation-list";

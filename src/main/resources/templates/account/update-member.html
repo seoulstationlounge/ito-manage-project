@@ -28,12 +28,12 @@
 
                 <div class="form-group">
                     <label for="startWorkTime">입사일자</label>
-                    <input id="startWorkTime" type="text" th:field="*{startWorkTime}" class="form-control">
+                    <input id="startWorkTime" type="date" class="form-control" th:field="*{startWorkTime}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="endWorkTime">퇴사일자</label>
-                    <input id="endWorkTime" type="text" th:field="*{endWorkTime}" class="form-control">
+                    <input id="endWorkTime" type="date" class="form-control" th:field="*{endWorkTime}">
                 </div>
 
                 <div class="form-group">

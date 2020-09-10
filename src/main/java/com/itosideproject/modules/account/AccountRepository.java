@@ -20,7 +20,7 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Queryds
 
     Account findAccountById(Long id);
 
-    List<Account> findAccountsByActiveAccount(String activeAccount);
+    List<Account> findAccountsByActiveAccount(char activeAccount);
 
     @EntityGraph(attributePaths = {"tags", "zones"})
     Account findAccountWithTagsAndZonesById(Long id);

@@ -6,6 +6,7 @@ import com.itosideproject.modules.tag.Tag;
 import com.itosideproject.modules.zone.Zone;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -41,7 +42,7 @@ public class Account {
     @JsonIgnore
     private String password;
 
-    @ColumnDefault("'ROLE_USER'")
+    @Column(columnDefinition = "varchar(255) default 'ROLE_USER'")
     private String role;
 
     private String part;
@@ -52,8 +53,10 @@ public class Account {
 
     private String emergencyNumber;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startWorkTime;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endWorkTime;
 
     private double annualVacation;
@@ -66,8 +69,8 @@ public class Account {
 
     private String cardNumber;
 
-    @ColumnDefault("'A'")
-    private String activeAccount;
+    @Column(columnDefinition = "char default 'A'")
+    private char activeAccount;
 
     private boolean emailVerified;
 
@@ -123,5 +126,7 @@ public class Account {
     public boolean canSendConfirmEmail() {
         return this.emailCheckTokenGeneratedAt.isBefore(LocalDateTime.now().minusHours(1));
     }
+
+
 
 }

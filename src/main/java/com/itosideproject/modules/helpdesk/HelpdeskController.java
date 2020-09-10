@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HelpdeskController {
+
 	@Autowired
 	private QuestionRepository questionRepository;
 	
@@ -17,6 +18,7 @@ public class HelpdeskController {
 		model.addAttribute(account);
 		model.addAttribute("questionList", questionRepository.findAll());
 
-		return "helpdesk/index";
+		return "helpdesk/view";
 	}
+
 }

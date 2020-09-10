@@ -3,6 +3,7 @@ package com.itosideproject.modules.account.form;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -37,13 +38,14 @@ public class SignUpForm {
 
     private String userName;
 
-    @ColumnDefault("'ROLE_USER'")
     private String role;
 
     private String emergencyNumber;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startWorkTime;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate endWorkTime;
 
     private double annualVacation;
@@ -55,5 +57,7 @@ public class SignUpForm {
     private String dlGroupName;
 
     private String cardNumber;
+
+    private char activeAccount;
 
 }

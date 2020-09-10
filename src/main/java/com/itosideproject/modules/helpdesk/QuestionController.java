@@ -68,7 +68,7 @@ public class QuestionController {
 		model.addAttribute("question", question);
 		model.addAttribute(account);
 
-		return "/helpdesk/updateForm";
+		return "/helpdesk/update-form";
 	}
 	
 	private Result valid(Account account, Question question) {

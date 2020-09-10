@@ -140,7 +140,7 @@ public class AccountService implements UserDetailsService {
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
-        account.setActiveAccount("C");
+        account.setActiveAccount('C');
         accountRepository.save(account);
     }
 

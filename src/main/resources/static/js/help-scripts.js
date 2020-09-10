@@ -21,12 +21,11 @@ function addAnswer(e) {
 }
 
 function onError(xhr, status) {
-	debugger;
 }
 
 function onSuccess(data, status) {
 	console.log(data);
-	debugger;
+
 	let answerTemplate = $("#answerTemplate").html();
 	let template = answerTemplate.format(data.writerUserName, data.formattedCreateDate, data.content, data.questionId, data.id, data.profileImage);
 	$(".qna-comment-slipp-articles").prepend(template);

@@ -140,7 +140,7 @@ public class AccountController {
             Account accountLoaded = accountRepository.findAccountWithTagsAndZonesById(account.getId());
             model.addAttribute(accountLoaded);
 
-            List<Account> accountList = accountRepository.findAccountsByActiveAccount("A");
+            List<Account> accountList = accountRepository.findAccountsByActiveAccount('A');
             model.addAttribute("accountList", accountList);
             return "account/members";
         }

@@ -201,6 +201,38 @@
                     </tr>
                 </tbody>
             </table>
+            <table width="800" height="100" border="1" cellspacing="0" cellpadding="0" bordercolor="#000000"
+                   style="border-collapse:collapse;" align="center" class="form10">
+                <thead>
+                <tr>
+                    <td width="20%">구분</td>
+                    <td width="20%">근무 시간</td>
+                    <td width="20%">대휴 기준</td>
+                    <td width="20%">근무 시간</td>
+                    <td width="20%">대휴 기준</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>평일</td>
+                        <td>23시 이후 퇴근</td>
+                        <td rowspan="3">0.5일</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>토요일</td>
+                        <td>4시간 이하</td>
+                        <td>3시간 초과</td>
+                        <td rowspan="2">1일</td>
+                    </tr>
+                    <tr>
+                        <td>법정공유일/일요일</td>
+                        <td>3시간 이하</td>
+                        <td>3시간 초과</td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
     </div>
@@ -230,7 +262,8 @@
                 getParam(4);
             }
 
-            window.location.reload('lcaohost:8080/vacation');
+            debugger;
+            window.location.reload('/vacation');
         });
     });
 
@@ -245,7 +278,6 @@
             remark : $('#remark' + num).val()
         };
 
-        debugger;
 
         $.ajax({
             type: 'POST',
